@@ -18,7 +18,7 @@ const ProtectedLayout = ({ children, allowedRoles }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center text-cyan-400 font-mono text-sm">
+      <div className="min-h-screen bg-[#FAF7F2] flex items-center justify-center text-amber-700 font-medium text-sm">
         Initializing Manpower System...
       </div>
     );
@@ -33,7 +33,7 @@ const ProtectedLayout = ({ children, allowedRoles }) => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+    <div className="min-h-screen flex flex-col bg-[#FAF7F2] text-stone-800">
       <Navbar 
         onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} 
         isSidebarOpen={isSidebarOpen} 

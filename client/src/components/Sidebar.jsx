@@ -49,13 +49,13 @@ const Sidebar = ({ isOpen, onClose }) => {
       {isOpen && (
         <div 
           onClick={onClose} 
-          className="fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-40 bg-stone-900/30 backdrop-blur-xs md:hidden"
         />
       )}
 
       <aside className={`
         fixed md:static inset-y-0 left-0 z-40
-        w-64 bg-slate-900 border-r border-slate-800
+        w-64 bg-[#FCFAF6] md:bg-white border-r border-stone-200/90
         transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0
         transition-transform duration-200 ease-in-out
         flex flex-col justify-between p-4 overflow-y-auto shrink-0
@@ -63,7 +63,7 @@ const Sidebar = ({ isOpen, onClose }) => {
         <div className="space-y-6">
           {/* Navigation Category Header */}
           <div>
-            <p className="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <p className="px-3 text-[11px] font-semibold uppercase tracking-wider text-stone-400 mb-2">
               Main Menu
             </p>
             <nav className="space-y-1">
@@ -78,8 +78,8 @@ const Sidebar = ({ isOpen, onClose }) => {
                     className={({ isActive }) => `
                       flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition
                       ${isActive 
-                        ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md shadow-cyan-500/10' 
-                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/80'
+                        ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/15' 
+                        : 'text-stone-600 hover:text-stone-900 hover:bg-[#F5F1E8]'
                       }
                     `}
                   >
@@ -93,12 +93,12 @@ const Sidebar = ({ isOpen, onClose }) => {
         </div>
 
         {/* Bottom Role Info Panel */}
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3">
-          <div className="flex items-center space-x-2 text-xs text-slate-300">
-            <ShieldAlert className="w-4 h-4 text-cyan-400" />
-            <span className="font-medium">Role: {user?.role}</span>
+        <div className="bg-[#F8F5EE] border border-stone-200/80 rounded-2xl p-3.5">
+          <div className="flex items-center space-x-2 text-xs text-stone-700">
+            <ShieldAlert className="w-4 h-4 text-amber-600" />
+            <span className="font-semibold">Role: {user?.role}</span>
           </div>
-          <p className="text-[11px] text-slate-400 mt-1">
+          <p className="text-[11px] text-stone-500 mt-1">
             {user?.role === 'Admin' && 'Admin & Supervisory Control'}
             {user?.role === 'Manager' && 'Team & Department Supervision'}
             {user?.role === 'Employee' && 'Self-service Attendance & Skills'}

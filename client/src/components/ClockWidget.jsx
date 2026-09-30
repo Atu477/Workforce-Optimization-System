@@ -64,9 +64,9 @@ const ClockWidget = ({ onAttendanceChange }) => {
 
   if (loading) {
     return (
-      <div className="bg-slate-800 border border-slate-700/60 rounded-2xl p-6 animate-pulse">
-        <div className="h-6 bg-slate-700 rounded w-1/3 mb-4"></div>
-        <div className="h-10 bg-slate-700 rounded w-1/2"></div>
+      <div className="bg-white border border-stone-200/80 rounded-2xl p-6 shadow-xs animate-pulse">
+        <div className="h-6 bg-stone-100 rounded w-1/3 mb-4"></div>
+        <div className="h-10 bg-stone-100 rounded w-1/2"></div>
       </div>
     );
   }
@@ -75,24 +75,24 @@ const ClockWidget = ({ onAttendanceChange }) => {
   const isClockedOut = todayAttendance && todayAttendance.clockOut;
 
   return (
-    <div className="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/80 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+    <div className="bg-gradient-to-br from-white to-[#FAF6EE] border border-stone-200/90 rounded-2xl p-6 shadow-xs relative overflow-hidden">
       {/* Background Accent Gradient */}
-      <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
         
         {/* Left Section: Live Time & Status */}
         <div className="space-y-3">
-          <div className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-cyan-400">
+          <div className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-amber-700">
             <Clock className="w-4 h-4" />
             <span>Self-Service Attendance</span>
           </div>
 
           <div className="flex items-baseline space-x-3">
-            <h2 className="text-3xl font-extrabold text-white font-mono tracking-tight">
+            <h2 className="text-3xl font-black text-stone-900 font-mono tracking-tight">
               {liveTime.toLocaleTimeString()}
             </h2>
-            <span className="text-xs text-slate-400 flex items-center space-x-1">
+            <span className="text-xs text-stone-500 flex items-center space-x-1">
               <Calendar className="w-3.5 h-3.5" />
               <span>{liveTime.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</span>
             </span>
@@ -100,48 +100,48 @@ const ClockWidget = ({ onAttendanceChange }) => {
 
           {/* Status Badge */}
           <div className="flex items-center space-x-3">
-            <span className="text-xs text-slate-400 font-medium">Today's Status:</span>
+            <span className="text-xs text-stone-500 font-medium">Today's Status:</span>
             {!todayAttendance && (
-              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-700/60 text-slate-300 border border-slate-600">
-                <AlertCircle className="w-3.5 h-3.5 text-yellow-400" />
+              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-stone-100 text-stone-600 border border-stone-200">
+                <AlertCircle className="w-3.5 h-3.5 text-amber-500" />
                 <span>Not Clocked In</span>
               </span>
             )}
             {isClockedIn && (
-              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 animate-pulse">
+              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 animate-pulse">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>Clocked In ({todayAttendance.workType})</span>
               </span>
             )}
             {isClockedOut && (
-              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" />
+              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
                 <span>Shift Completed</span>
               </span>
             )}
           </div>
 
-          <div className="text-xs text-slate-400">
-            Assigned Shift: <span className="text-slate-200 font-medium">{user?.shift}</span>
+          <div className="text-xs text-stone-500">
+            Assigned Shift: <span className="text-stone-800 font-semibold">{user?.shift}</span>
           </div>
         </div>
 
         {/* Middle Section: Inputs (Work Type & Notes) when not yet completed */}
         {!isClockedOut && (
-          <div className="w-full lg:w-auto space-y-3 bg-slate-950/40 p-4 rounded-xl border border-slate-800">
-            <div className="flex items-center space-x-2 text-xs text-slate-300 font-medium">
-              <MapPin className="w-3.5 h-3.5 text-cyan-400" />
+          <div className="w-full lg:w-auto space-y-3 bg-[#F8F5EE] p-4 rounded-2xl border border-stone-200/80">
+            <div className="flex items-center space-x-2 text-xs text-stone-700 font-medium">
+              <MapPin className="w-3.5 h-3.5 text-amber-600" />
               <span>Work Mode:</span>
-              <div className="flex space-x-1 bg-slate-900 p-1 rounded-lg border border-slate-800">
+              <div className="flex space-x-1 bg-white p-1 rounded-xl border border-stone-200">
                 {['On-Site', 'Remote', 'Field'].map(type => (
                   <button
                     key={type}
                     disabled={isClockedIn}
                     onClick={() => setWorkType(type)}
-                    className={`px-2.5 py-1 text-xs rounded-md font-medium transition ${
+                    className={`px-2.5 py-1 text-xs rounded-lg font-medium transition ${
                       workType === type 
-                        ? 'bg-cyan-600 text-white shadow' 
-                        : 'text-slate-400 hover:text-slate-200'
+                        ? 'bg-amber-500 text-white shadow-xs font-semibold' 
+                        : 'text-stone-500 hover:text-stone-800'
                     }`}
                   >
                     {type}
@@ -152,13 +152,13 @@ const ClockWidget = ({ onAttendanceChange }) => {
 
             {!isClockedIn && (
               <div className="flex items-center space-x-2">
-                <FileText className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <FileText className="w-3.5 h-3.5 text-stone-400 shrink-0" />
                 <input
                   type="text"
                   placeholder="Add optional shift notes or tasks..."
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 placeholder-slate-500"
+                  className="w-full bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500 placeholder-stone-400"
                 />
               </div>
             )}
@@ -171,7 +171,7 @@ const ClockWidget = ({ onAttendanceChange }) => {
             <button
               onClick={handleClockIn}
               disabled={actionLoading}
-              className="w-full lg:w-auto flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/20 transition transform active:scale-95 disabled:opacity-50"
+              className="w-full lg:w-auto flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-2xl shadow-md shadow-emerald-500/20 transition transform active:scale-95 disabled:opacity-50"
             >
               <Play className="w-5 h-5 fill-current" />
               <span>{actionLoading ? 'Clocking In...' : 'Clock In Now'}</span>
@@ -180,16 +180,16 @@ const ClockWidget = ({ onAttendanceChange }) => {
             <button
               onClick={handleClockOut}
               disabled={actionLoading}
-              className="w-full lg:w-auto flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-amber-600 to-red-600 hover:from-amber-500 hover:to-red-500 text-white font-bold rounded-xl shadow-lg shadow-amber-500/20 transition transform active:scale-95 disabled:opacity-50"
+              className="w-full lg:w-auto flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-bold rounded-2xl shadow-md shadow-rose-500/20 transition transform active:scale-95 disabled:opacity-50"
             >
               <Square className="w-5 h-5 fill-current" />
               <span>{actionLoading ? 'Clocking Out...' : 'Clock Out Now'}</span>
             </button>
           ) : (
-            <div className="text-center p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-300 text-xs">
-              Clocked In: <span className="font-mono font-bold text-white">{new Date(todayAttendance.clockIn).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+            <div className="text-center p-3 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-800 text-xs">
+              Clocked In: <span className="font-mono font-bold text-stone-900">{new Date(todayAttendance.clockIn).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
               <br />
-              Clocked Out: <span className="font-mono font-bold text-white">{new Date(todayAttendance.clockOut).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+              Clocked Out: <span className="font-mono font-bold text-stone-900">{new Date(todayAttendance.clockOut).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
             </div>
           )}
         </div>

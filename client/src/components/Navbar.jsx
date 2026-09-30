@@ -14,34 +14,34 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen }) => {
   const getRoleBadge = (role) => {
     switch (role) {
       case 'Admin':
-        return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
+        return 'bg-purple-100 text-purple-700 border-purple-200';
       case 'Manager':
-        return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
+        return 'bg-blue-100 text-blue-700 border-blue-200';
       default:
-        return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+        return 'bg-emerald-100 text-emerald-700 border-emerald-200';
     }
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-slate-900/95 border-b border-slate-800 backdrop-blur px-4 py-3">
+    <header className="sticky top-0 z-30 bg-white/95 border-b border-stone-200/80 backdrop-blur px-4 py-3 shadow-xs">
       <div className="flex items-center justify-between">
         {/* Left: Mobile Toggle & Branding */}
         <div className="flex items-center space-x-3">
           <button
             onClick={onToggleSidebar}
-            className="md:hidden text-slate-400 hover:text-slate-200 p-1.5 rounded-lg focus:outline-none"
+            className="md:hidden text-stone-500 hover:text-stone-800 p-1.5 rounded-lg focus:outline-none hover:bg-stone-100 transition"
           >
             {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
           <div className="flex items-center space-x-2.5">
-            <div className="w-9 h-9 bg-gradient-to-tr from-cyan-600 to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20">
+            <div className="w-9 h-9 bg-gradient-to-tr from-amber-500 to-orange-500 rounded-xl flex items-center justify-center shadow-md shadow-amber-500/20">
               <Award className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="font-bold text-slate-100 text-sm sm:text-base leading-tight">
-                Manpower & Skill System
+              <h1 className="font-bold text-stone-800 text-sm sm:text-base leading-tight">
+                Workforce Optimization System
               </h1>
-              <p className="text-[11px] text-slate-400 hidden sm:block">
+              <p className="text-[11px] text-stone-500 hidden sm:block">
                 Digital Attendance & Workforce Management
               </p>
             </div>
@@ -50,32 +50,32 @@ const Navbar = ({ onToggleSidebar, isSidebarOpen }) => {
 
         {/* Right: Live Clock & User Profile Badge */}
         <div className="flex items-center space-x-4">
-          <div className="hidden lg:flex items-center space-x-2 text-xs font-mono text-slate-400 bg-slate-800/60 px-3 py-1.5 rounded-lg border border-slate-700/50">
-            <Clock className="w-3.5 h-3.5 text-cyan-400" />
+          <div className="hidden lg:flex items-center space-x-2 text-xs font-mono text-stone-600 bg-stone-100/90 px-3 py-1.5 rounded-xl border border-stone-200/80">
+            <Clock className="w-3.5 h-3.5 text-amber-600" />
             <span>{currentTime.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
-            <span className="text-cyan-300 font-semibold">{currentTime.toLocaleTimeString()}</span>
+            <span className="text-amber-700 font-semibold">{currentTime.toLocaleTimeString()}</span>
           </div>
 
           {user && (
-            <div className="flex items-center space-x-3 pl-2 border-l border-slate-800">
+            <div className="flex items-center space-x-3 pl-2 border-l border-stone-200">
               <div className="text-right hidden sm:block">
                 <div className="flex items-center justify-end space-x-1.5">
-                  <span className="font-semibold text-xs text-slate-200">{user.name}</span>
+                  <span className="font-semibold text-xs text-stone-800">{user.name}</span>
                   <span className={`px-1.5 py-0.5 text-[10px] uppercase font-bold tracking-wider rounded border ${getRoleBadge(user.role)}`}>
                     {user.role}
                   </span>
                 </div>
-                <div className="text-[11px] text-slate-400">{user.employeeId} • {user.department}</div>
+                <div className="text-[11px] text-stone-500">{user.employeeId} • {user.department}</div>
               </div>
 
-              <div className="w-9 h-9 bg-slate-800 rounded-full border border-slate-700 flex items-center justify-center text-cyan-400 font-bold text-sm">
+              <div className="w-9 h-9 bg-amber-100 border border-amber-200 rounded-full flex items-center justify-center text-amber-800 font-bold text-sm shadow-xs">
                 {user.name.charAt(0)}
               </div>
 
               <button
                 onClick={logout}
                 title="Logout"
-                className="p-2 text-slate-400 hover:text-red-400 hover:bg-slate-800 rounded-lg transition"
+                className="p-2 text-stone-400 hover:text-rose-600 hover:bg-stone-100 rounded-lg transition"
               >
                 <LogOut className="w-4 h-4" />
               </button>

@@ -462,13 +462,13 @@ const Attendance = () => {
     <div className="space-y-6">
       
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-md">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-stone-200/90 rounded-2xl p-6 shadow-md">
         <div>
           <h1 className="text-2xl font-extrabold text-white tracking-tight flex items-center space-x-2">
-            <Clock className="w-6 h-6 text-cyan-400" />
+            <Clock className="w-6 h-6 text-amber-600" />
             <span>{isAdminOrManager ? 'Live Workforce Roster & Attendance' : 'My Attendance Records'}</span>
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-stone-500 mt-1">
             {isAdminOrManager 
               ? 'Real-time active factory floor monitoring, live shifts, audit logs & future manpower reports' 
               : `Personal shift logs and clock-in/out records for ${user?.name}`}
@@ -494,7 +494,7 @@ const Attendance = () => {
           {isAdminOrManager && (
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center justify-center space-x-2 px-3.5 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/20 text-xs transition transform active:scale-95"
+              className="flex items-center justify-center space-x-2 px-3.5 py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-xl shadow-lg shadow-amber-500/20 text-xs transition transform active:scale-95"
             >
               <PlusCircle className="w-4 h-4" />
               <span>Manual Entry</span>
@@ -506,7 +506,7 @@ const Attendance = () => {
               if (activeTab === 'live') fetchLiveRoster();
               else fetchHistory();
             }}
-            className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl border border-slate-700 transition"
+            className="p-2 bg-[#F8F5EE] hover:bg-stone-100 text-stone-700 rounded-xl border border-stone-200 transition"
             title="Refresh"
           >
             <RefreshCw className={`w-4 h-4 ${liveLoading || historyLoading ? 'animate-spin' : ''}`} />
@@ -516,13 +516,13 @@ const Attendance = () => {
 
       {/* Admin / Manager Tab Switcher */}
       {isAdminOrManager && (
-        <div className="flex items-center space-x-2 border-b border-slate-800 pb-3">
+        <div className="flex items-center space-x-2 border-b border-stone-200/90 pb-3">
           <button
             onClick={() => setActiveTab('live')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
               activeTab === 'live'
-                ? 'bg-cyan-600 text-white shadow-md shadow-cyan-500/20'
-                : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
+                : 'bg-white text-stone-500 hover:text-stone-800 border border-stone-200/90'
             }`}
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -538,8 +538,8 @@ const Attendance = () => {
             onClick={() => setActiveTab('history')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
               activeTab === 'history'
-                ? 'bg-cyan-600 text-white shadow-md shadow-cyan-500/20'
-                : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
+                : 'bg-white text-stone-500 hover:text-stone-800 border border-stone-200/90'
             }`}
           >
             <Calendar className="w-3.5 h-3.5" />
@@ -560,83 +560,83 @@ const Attendance = () => {
           {/* Live KPI Summary Cards */}
           {availability && (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3.5">
-                <div className="flex items-center space-x-1.5 text-slate-400 text-[11px] font-semibold uppercase">
-                  <Users className="w-3.5 h-3.5 text-cyan-400" />
+              <div className="bg-white border border-stone-200/80 rounded-xl p-3.5">
+                <div className="flex items-center space-x-1.5 text-stone-500 text-[11px] font-semibold uppercase">
+                  <Users className="w-3.5 h-3.5 text-amber-600" />
                   <span>Total Active</span>
                 </div>
-                <div className="text-xl font-extrabold text-cyan-400 mt-1">{availability.summary.totalActive}</div>
-                <div className="text-[10px] text-slate-500">Registered workers</div>
+                <div className="text-xl font-extrabold text-amber-600 mt-1">{availability.summary.totalActive}</div>
+                <div className="text-[10px] text-stone-400">Registered workers</div>
               </div>
 
-              <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3.5">
-                <div className="flex items-center space-x-1.5 text-slate-400 text-[11px] font-semibold uppercase">
+              <div className="bg-white border border-stone-200/80 rounded-xl p-3.5">
+                <div className="flex items-center space-x-1.5 text-stone-500 text-[11px] font-semibold uppercase">
                   <UserCheck className="w-3.5 h-3.5 text-emerald-400" />
                   <span>Present Now</span>
                 </div>
                 <div className="text-xl font-extrabold text-emerald-400 mt-1">{availability.summary.present}</div>
-                <div className="text-[10px] text-slate-500">On-site or active</div>
+                <div className="text-[10px] text-stone-400">On-site or active</div>
               </div>
 
-              <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3.5">
-                <div className="flex items-center space-x-1.5 text-slate-400 text-[11px] font-semibold uppercase">
+              <div className="bg-white border border-stone-200/80 rounded-xl p-3.5">
+                <div className="flex items-center space-x-1.5 text-stone-500 text-[11px] font-semibold uppercase">
                   <Clock className="w-3.5 h-3.5 text-yellow-400" />
                   <span>Late Arrivals</span>
                 </div>
                 <div className="text-xl font-extrabold text-yellow-400 mt-1">
                   {availability.availabilityList.filter(a => a.status === 'Late').length}
                 </div>
-                <div className="text-[10px] text-slate-500">Shift delay logged</div>
+                <div className="text-[10px] text-stone-400">Shift delay logged</div>
               </div>
 
-              <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3.5">
-                <div className="flex items-center space-x-1.5 text-slate-400 text-[11px] font-semibold uppercase">
+              <div className="bg-white border border-stone-200/80 rounded-xl p-3.5">
+                <div className="flex items-center space-x-1.5 text-stone-500 text-[11px] font-semibold uppercase">
                   <CalendarOff className="w-3.5 h-3.5 text-amber-400" />
                   <span>On Leave</span>
                 </div>
                 <div className="text-xl font-extrabold text-amber-400 mt-1">{availability.summary.onLeave}</div>
-                <div className="text-[10px] text-slate-500">Approved leaves</div>
+                <div className="text-[10px] text-stone-400">Approved leaves</div>
               </div>
 
-              <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3.5">
-                <div className="flex items-center space-x-1.5 text-slate-400 text-[11px] font-semibold uppercase">
+              <div className="bg-white border border-stone-200/80 rounded-xl p-3.5">
+                <div className="flex items-center space-x-1.5 text-stone-500 text-[11px] font-semibold uppercase">
                   <UserX className="w-3.5 h-3.5 text-rose-400" />
                   <span>Absent</span>
                 </div>
                 <div className="text-xl font-extrabold text-rose-400 mt-1">{availability.summary.absent}</div>
-                <div className="text-[10px] text-slate-500">Shift gap count</div>
+                <div className="text-[10px] text-stone-400">Shift gap count</div>
               </div>
 
-              <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3.5">
-                <div className="flex items-center space-x-1.5 text-slate-400 text-[11px] font-semibold uppercase">
+              <div className="bg-white border border-stone-200/80 rounded-xl p-3.5">
+                <div className="flex items-center space-x-1.5 text-stone-500 text-[11px] font-semibold uppercase">
                   <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" />
                   <span>Availability</span>
                 </div>
                 <div className="text-xl font-extrabold text-blue-400 mt-1">{availability.summary.availabilityPercentage}%</div>
-                <div className="text-[10px] text-slate-500">Workforce presence</div>
+                <div className="text-[10px] text-stone-400">Workforce presence</div>
               </div>
             </div>
           )}
 
           {/* Live Filter Bar */}
-          <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 shadow-lg backdrop-blur space-y-3">
+          <div className="bg-white border border-stone-200/80 rounded-2xl p-4 shadow-lg backdrop-blur space-y-3">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">Roster Date</label>
+                <label className="block text-[11px] font-semibold text-stone-500 mb-1 uppercase">Roster Date</label>
                 <input
                   type="date"
                   value={liveDate}
                   onChange={(e) => setLiveDate(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">Department</label>
+                <label className="block text-[11px] font-semibold text-stone-500 mb-1 uppercase">Department</label>
                 <select
                   value={liveDept}
                   onChange={(e) => setLiveDept(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                 >
                   <option value="">All Departments</option>
                   <option value="Engineering">Engineering</option>
@@ -649,11 +649,11 @@ const Attendance = () => {
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">Shift</label>
+                <label className="block text-[11px] font-semibold text-stone-500 mb-1 uppercase">Shift</label>
                 <select
                   value={liveShift}
                   onChange={(e) => setLiveShift(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                 >
                   <option value="">All Shifts</option>
                   <option value="Morning Shift (08:00 - 16:00)">Morning Shift (08:00 - 16:00)</option>
@@ -663,11 +663,11 @@ const Attendance = () => {
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">Live Status Filter</label>
+                <label className="block text-[11px] font-semibold text-stone-500 mb-1 uppercase">Live Status Filter</label>
                 <select
                   value={liveStatusFilter}
                   onChange={(e) => setLiveStatusFilter(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                 >
                   <option value="">All Statuses</option>
                   <option value="Present">Present Only</option>
@@ -680,22 +680,22 @@ const Attendance = () => {
           </div>
 
           {/* Live Workforce Roster Table */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-lg overflow-hidden">
-            <div className="px-5 py-3.5 bg-slate-800/60 border-b border-slate-700/60 flex items-center justify-between">
+          <div className="bg-white border border-stone-200/90 rounded-2xl shadow-lg overflow-hidden">
+            <div className="px-5 py-3.5 bg-[#F8F5EE] border-b border-stone-200/80 flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-200">
+                <span className="text-xs font-bold uppercase tracking-wider text-stone-800">
                   Live Factory Floor Workforce — Date: {liveDate}
                 </span>
               </div>
-              <span className="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded border border-slate-700">
+              <span className="text-[10px] text-stone-500 bg-[#F8F5EE] px-2 py-0.5 rounded border border-stone-200">
                 {filteredLiveList.length} Active Workers Listed
               </span>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-slate-800/40 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-700/50">
+                <thead className="bg-[#F8F5EE] text-stone-500 uppercase text-[10px] tracking-wider border-b border-stone-200/70">
                   <tr>
                     <th className="px-4 py-3.5">Worker</th>
                     <th className="px-4 py-3.5">Department</th>
@@ -707,37 +707,37 @@ const Attendance = () => {
                     <th className="px-4 py-3.5 text-center">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60">
+                <tbody className="divide-y divide-stone-100">
                   {liveLoading ? (
                     <tr>
-                      <td colSpan="8" className="px-4 py-12 text-center text-slate-400">
-                        <RefreshCw className="w-5 h-5 animate-spin mx-auto mb-2 text-cyan-400" />
+                      <td colSpan="8" className="px-4 py-12 text-center text-stone-500">
+                        <RefreshCw className="w-5 h-5 animate-spin mx-auto mb-2 text-amber-600" />
                         Loading live workforce roster...
                       </td>
                     </tr>
                   ) : filteredLiveList.length === 0 ? (
                     <tr>
-                      <td colSpan="8" className="px-4 py-12 text-center text-slate-500">
+                      <td colSpan="8" className="px-4 py-12 text-center text-stone-400">
                         No workers found matching the selected filter criteria.
                       </td>
                     </tr>
                   ) : (
                     filteredLiveList.map(({ employee, attendance, status }) => (
-                      <tr key={employee._id} className="hover:bg-slate-800/40 transition">
+                      <tr key={employee._id} className="hover:bg-[#F8F5EE] transition">
                         <td className="px-4 py-3.5">
-                          <div className="font-semibold text-slate-100">{employee.name}</div>
-                          <div className="text-[10px] text-slate-400 font-mono">
+                          <div className="font-semibold text-stone-900">{employee.name}</div>
+                          <div className="text-[10px] text-stone-500 font-mono">
                             {employee.employeeId} • {employee.designation}
                           </div>
                         </td>
-                        <td className="px-4 py-3.5 text-slate-300">{employee.department}</td>
-                        <td className="px-4 py-3.5 text-slate-300 text-[11px]">{employee.shift?.split(' ')[0]}</td>
-                        <td className="px-4 py-3.5 text-center font-mono text-slate-300">
+                        <td className="px-4 py-3.5 text-stone-700">{employee.department}</td>
+                        <td className="px-4 py-3.5 text-stone-700 text-[11px]">{employee.shift?.split(' ')[0]}</td>
+                        <td className="px-4 py-3.5 text-center font-mono text-stone-700">
                           {attendance?.clockIn 
                             ? new Date(attendance.clockIn).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                             : '--:--'}
                         </td>
-                        <td className="px-4 py-3.5 text-center font-mono text-slate-300">
+                        <td className="px-4 py-3.5 text-center font-mono text-stone-700">
                           {attendance?.clockOut 
                             ? new Date(attendance.clockOut).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                             : attendance?.clockIn ? (
@@ -747,9 +747,9 @@ const Attendance = () => {
                               </span>
                             ) : '--:--'}
                         </td>
-                        <td className="px-4 py-3.5 text-slate-300">
-                          <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px]">
-                            <MapPin className="w-3 h-3 text-cyan-400" />
+                        <td className="px-4 py-3.5 text-stone-700">
+                          <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-[#F8F5EE] border border-stone-200 text-[10px]">
+                            <MapPin className="w-3 h-3 text-amber-600" />
                             <span>{attendance?.workType || 'On-Site'}</span>
                           </span>
                         </td>
@@ -766,7 +766,7 @@ const Attendance = () => {
                         <td className="px-4 py-3.5 text-center">
                           <button
                             onClick={() => openOverrideForEmployee(employee._id, employee.shift)}
-                            className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg text-[10px] font-semibold border border-slate-700 transition"
+                            className="px-2.5 py-1 bg-[#F8F5EE] hover:bg-stone-100 text-stone-700 hover:text-white rounded-lg text-[10px] font-semibold border border-stone-200 transition"
                           >
                             Edit Status
                           </button>
@@ -788,32 +788,32 @@ const Attendance = () => {
         <div className="space-y-4">
           
           {/* Filter Bar */}
-          <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 shadow-lg backdrop-blur space-y-3">
+          <div className="bg-white border border-stone-200/80 rounded-2xl p-4 shadow-lg backdrop-blur space-y-3">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">Start Date</label>
+                <label className="block text-[11px] font-semibold text-stone-500 mb-1 uppercase">Start Date</label>
                 <input
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">End Date</label>
+                <label className="block text-[11px] font-semibold text-stone-500 mb-1 uppercase">End Date</label>
                 <input
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">Shift</label>
+                <label className="block text-[11px] font-semibold text-stone-500 mb-1 uppercase">Shift</label>
                 <select
                   value={shiftFilter}
                   onChange={(e) => setShiftFilter(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                 >
                   <option value="">All Shifts</option>
                   <option value="Morning Shift (08:00 - 16:00)">Morning Shift</option>
@@ -822,11 +822,11 @@ const Attendance = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">Status</label>
+                <label className="block text-[11px] font-semibold text-stone-500 mb-1 uppercase">Status</label>
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                 >
                   <option value="">All Statuses</option>
                   <option value="Present">Present</option>
@@ -837,11 +837,11 @@ const Attendance = () => {
               </div>
               {isAdminOrManager && (
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">Department</label>
+                  <label className="block text-[11px] font-semibold text-stone-500 mb-1 uppercase">Department</label>
                   <select
                     value={departmentFilter}
                     onChange={(e) => setDepartmentFilter(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                    className="w-full bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                   >
                     <option value="">All Departments</option>
                     <option value="Engineering">Engineering</option>
@@ -857,10 +857,10 @@ const Attendance = () => {
           </div>
 
           {/* Attendance History Table */}
-          <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl shadow-lg backdrop-blur overflow-hidden">
+          <div className="bg-white border border-stone-200/80 rounded-2xl shadow-lg backdrop-blur overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-slate-900/80 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-700">
+                <thead className="bg-[#F8F5EE] text-stone-500 uppercase text-[10px] tracking-wider border-b border-stone-200">
                   <tr>
                     <th className="px-4 py-3.5">Date</th>
                     <th className="px-4 py-3.5">Employee</th>
@@ -872,49 +872,49 @@ const Attendance = () => {
                     <th className="px-4 py-3.5">Notes</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-700/50">
+                <tbody className="divide-y divide-stone-100">
                   {historyLoading ? (
                     <tr>
-                      <td colSpan="8" className="px-4 py-8 text-center text-slate-400">
+                      <td colSpan="8" className="px-4 py-8 text-center text-stone-500">
                         Loading attendance history logs...
                       </td>
                     </tr>
                   ) : history.length === 0 ? (
                     <tr>
-                      <td colSpan="8" className="px-4 py-8 text-center text-slate-400">
+                      <td colSpan="8" className="px-4 py-8 text-center text-stone-500">
                         No attendance logs found matching filters.
                       </td>
                     </tr>
                   ) : (
                     history.map((record) => (
-                      <tr key={record._id} className="hover:bg-slate-700/20 transition">
-                        <td className="px-4 py-3 font-mono font-semibold text-slate-200">
+                      <tr key={record._id} className="hover:bg-stone-100/20 transition">
+                        <td className="px-4 py-3 font-mono font-semibold text-stone-800">
                           {record.date}
                         </td>
                         <td className="px-4 py-3">
                           {record.employee ? (
                             <div>
-                              <div className="font-bold text-slate-100">{record.employee.name}</div>
-                              <div className="text-[10px] text-slate-400">{record.employee.employeeId} • {record.employee.department}</div>
+                              <div className="font-bold text-stone-900">{record.employee.name}</div>
+                              <div className="text-[10px] text-stone-500">{record.employee.employeeId} • {record.employee.department}</div>
                             </div>
                           ) : (
-                            <span className="text-slate-500">System Employee</span>
+                            <span className="text-stone-400">System Employee</span>
                           )}
                         </td>
-                        <td className="px-4 py-3 text-slate-300">{record.shift?.split(' ')[0]}</td>
-                        <td className="px-4 py-3 font-mono text-slate-300">
+                        <td className="px-4 py-3 text-stone-700">{record.shift?.split(' ')[0]}</td>
+                        <td className="px-4 py-3 font-mono text-stone-700">
                           {record.clockIn 
                             ? new Date(record.clockIn).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
                             : '--:--'}
                         </td>
-                        <td className="px-4 py-3 font-mono text-slate-300">
+                        <td className="px-4 py-3 font-mono text-stone-700">
                           {record.clockOut 
                             ? new Date(record.clockOut).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
                             : '--:--'}
                         </td>
-                        <td className="px-4 py-3 text-slate-300 font-medium">
-                          <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-[10px]">
-                            <MapPin className="w-3 h-3 text-cyan-400" />
+                        <td className="px-4 py-3 text-stone-700 font-medium">
+                          <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-white border border-stone-200 text-[10px]">
+                            <MapPin className="w-3 h-3 text-amber-600" />
                             <span>{record.workType || 'On-Site'}</span>
                           </span>
                         </td>
@@ -928,7 +928,7 @@ const Attendance = () => {
                             {record.status}
                           </span>
                         </td>
-                        <td className="px-4 py-3 text-slate-400 italic text-[11px]">
+                        <td className="px-4 py-3 text-stone-500 italic text-[11px]">
                           {record.notes || '-'}
                         </td>
                       </tr>
@@ -951,17 +951,17 @@ const Attendance = () => {
       >
         {reportStep === 'configure' ? (
           <form onSubmit={handleGenerateReport} className="space-y-4 text-xs">
-            <p className="text-slate-400 text-xs">
+            <p className="text-stone-500 text-xs">
               Select timeframes, workforce scope, and parameters to generate executive reports for future manpower &amp; shift planning.
             </p>
 
             {/* Timeframe Dropdown */}
             <div>
-              <label className="block text-slate-300 font-semibold mb-1">Select Timeframe</label>
+              <label className="block text-stone-700 font-semibold mb-1">Select Timeframe</label>
               <select
                 value={reportTimeframe}
                 onChange={(e) => setReportTimeframe(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500 cursor-pointer"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-amber-500 cursor-pointer"
               >
                 <option value="1day">📅 1 Day (Today's Workforce Audit)</option>
                 <option value="1week">📆 1 Week (Past 7 Days Output)</option>
@@ -973,25 +973,25 @@ const Attendance = () => {
 
             {/* Custom Range pickers */}
             {reportTimeframe === 'custom' && (
-              <div className="grid grid-cols-2 gap-3 p-3 bg-slate-950/70 border border-slate-800 rounded-xl">
+              <div className="grid grid-cols-2 gap-3 p-3 bg-[#FAF7F2]/70 border border-stone-200/90 rounded-xl">
                 <div>
-                  <label className="block text-slate-400 font-medium mb-1">From Date</label>
+                  <label className="block text-stone-500 font-medium mb-1">From Date</label>
                   <input
                     type="date"
                     required
                     value={reportCustomStart}
                     onChange={(e) => setReportCustomStart(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                    className="w-full bg-white border border-stone-200 rounded-lg px-2.5 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 font-medium mb-1">To Date</label>
+                  <label className="block text-stone-500 font-medium mb-1">To Date</label>
                   <input
                     type="date"
                     required
                     value={reportCustomEnd}
                     onChange={(e) => setReportCustomEnd(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                    className="w-full bg-white border border-stone-200 rounded-lg px-2.5 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
@@ -999,11 +999,11 @@ const Attendance = () => {
 
             {/* Employee Filter: All vs Specific Individual Worker */}
             <div>
-              <label className="block text-slate-300 font-semibold mb-1">Workforce Scope</label>
+              <label className="block text-stone-700 font-semibold mb-1">Workforce Scope</label>
               <select
                 value={reportEmployeeId}
                 onChange={(e) => setReportEmployeeId(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500 cursor-pointer"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-amber-500 cursor-pointer"
               >
                 <option value="all">👥 All Factory Workforce (Complete Company Report)</option>
                 <optgroup label="Or Audit Specific Individual Worker:">
@@ -1019,11 +1019,11 @@ const Attendance = () => {
             {/* Department Filter */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Department</label>
+                <label className="block text-stone-700 font-semibold mb-1">Department</label>
                 <select
                   value={reportDept}
                   onChange={(e) => setReportDept(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-amber-500"
                 >
                   <option value="">All Departments</option>
                   <option value="Engineering">Engineering</option>
@@ -1036,11 +1036,11 @@ const Attendance = () => {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Shift</label>
+                <label className="block text-stone-700 font-semibold mb-1">Shift</label>
                 <select
                   value={reportShift}
                   onChange={(e) => setReportShift(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-amber-500"
                 >
                   <option value="">All Shifts</option>
                   <option value="Morning Shift (08:00 - 16:00)">Morning Shift</option>
@@ -1050,11 +1050,11 @@ const Attendance = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-800">
+            <div className="flex items-center justify-end space-x-3 pt-4 border-t border-stone-200/90">
               <button
                 type="button"
                 onClick={() => setIsReportModalOpen(false)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-medium transition"
+                className="px-4 py-2 bg-[#F8F5EE] hover:bg-stone-100 text-stone-700 rounded-xl font-medium transition"
               >
                 Cancel
               </button>
@@ -1082,39 +1082,39 @@ const Attendance = () => {
           generatedReport && (
             <div className="space-y-4 text-xs max-h-[75vh] overflow-y-auto pr-1">
               {/* Header Box */}
-              <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1">
+              <div className="bg-[#FAF7F2] p-4 rounded-xl border border-stone-200/90 space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="font-extrabold text-sm text-cyan-400 uppercase tracking-wide">
+                  <span className="font-extrabold text-sm text-amber-600 uppercase tracking-wide">
                     {generatedReport.meta.company}
                   </span>
-                  <span className="text-[10px] text-slate-500 font-mono">
+                  <span className="text-[10px] text-stone-400 font-mono">
                     {new Date(generatedReport.meta.generatedAt).toLocaleDateString()}
                   </span>
                 </div>
-                <div className="font-semibold text-slate-200 text-xs">
+                <div className="font-semibold text-stone-800 text-xs">
                   {generatedReport.meta.reportType}
                 </div>
-                <div className="text-[11px] text-slate-400">
-                  Timeframe: <strong className="text-slate-200">{generatedReport.meta.timeframeLabel}</strong> • Scope: <strong className="text-slate-200">{generatedReport.meta.scope}</strong>
+                <div className="text-[11px] text-stone-500">
+                  Timeframe: <strong className="text-stone-800">{generatedReport.meta.timeframeLabel}</strong> • Scope: <strong className="text-stone-800">{generatedReport.meta.scope}</strong>
                 </div>
               </div>
 
               {/* KPI Summary Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-center">
-                  <div className="text-[10px] uppercase font-semibold text-slate-400">Total Workforce</div>
-                  <div className="text-lg font-extrabold text-cyan-400 mt-0.5">{generatedReport.summary.totalWorkforce}</div>
+                <div className="bg-stone-900/30 p-3 rounded-xl border border-stone-200/90 text-center">
+                  <div className="text-[10px] uppercase font-semibold text-stone-500">Total Workforce</div>
+                  <div className="text-lg font-extrabold text-amber-600 mt-0.5">{generatedReport.summary.totalWorkforce}</div>
                 </div>
-                <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-center">
-                  <div className="text-[10px] uppercase font-semibold text-slate-400">Attendance %</div>
+                <div className="bg-stone-900/30 p-3 rounded-xl border border-stone-200/90 text-center">
+                  <div className="text-[10px] uppercase font-semibold text-stone-500">Attendance %</div>
                   <div className="text-lg font-extrabold text-emerald-400 mt-0.5">{generatedReport.summary.overallAttendance}%</div>
                 </div>
-                <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-center">
-                  <div className="text-[10px] uppercase font-semibold text-slate-400">Hours Logged</div>
+                <div className="bg-stone-900/30 p-3 rounded-xl border border-stone-200/90 text-center">
+                  <div className="text-[10px] uppercase font-semibold text-stone-500">Hours Logged</div>
                   <div className="text-lg font-extrabold text-blue-400 mt-0.5">{generatedReport.summary.totalWorkingHours}h</div>
                 </div>
-                <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-center">
-                  <div className="text-[10px] uppercase font-semibold text-slate-400">Overtime Logged</div>
+                <div className="bg-stone-900/30 p-3 rounded-xl border border-stone-200/90 text-center">
+                  <div className="text-[10px] uppercase font-semibold text-stone-500">Overtime Logged</div>
                   <div className="text-lg font-extrabold text-purple-400 mt-0.5">{generatedReport.summary.totalOvertimeHours}h</div>
                 </div>
               </div>
@@ -1125,7 +1125,7 @@ const Attendance = () => {
                   <Sparkles className="w-4 h-4 text-emerald-400" />
                   <span>Strategic Future Planning &amp; Advisory</span>
                 </div>
-                <ul className="list-disc list-inside space-y-1 text-[11px] text-slate-300">
+                <ul className="list-disc list-inside space-y-1 text-[11px] text-stone-700">
                   {generatedReport.recommendations.map((rec, idx) => (
                     <li key={idx}>{rec}</li>
                   ))}
@@ -1133,9 +1133,9 @@ const Attendance = () => {
               </div>
 
               {/* Table of Workers */}
-              <div className="border border-slate-800 rounded-xl overflow-hidden">
+              <div className="border border-stone-200/90 rounded-xl overflow-hidden">
                 <table className="w-full text-left text-[11px]">
-                  <thead className="bg-slate-950 text-slate-400 uppercase text-[9px] border-b border-slate-800">
+                  <thead className="bg-[#FAF7F2] text-stone-500 uppercase text-[9px] border-b border-stone-200/90">
                     <tr>
                       <th className="px-3 py-2">Worker</th>
                       <th className="px-3 py-2">Department</th>
@@ -1145,15 +1145,15 @@ const Attendance = () => {
                       <th className="px-3 py-2 text-center">Attendance</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/60">
+                  <tbody className="divide-y divide-stone-100">
                     {generatedReport.workerList.slice(0, 10).map((item) => (
-                      <tr key={item.employee._id} className="hover:bg-slate-800/30">
-                        <td className="px-3 py-2 font-medium text-slate-200">
-                          {item.employee.name} <span className="text-slate-500 text-[9px]">({item.employee.employeeId})</span>
+                      <tr key={item.employee._id} className="hover:bg-[#FAF7F2]">
+                        <td className="px-3 py-2 font-medium text-stone-800">
+                          {item.employee.name} <span className="text-stone-400 text-[9px]">({item.employee.employeeId})</span>
                         </td>
-                        <td className="px-3 py-2 text-slate-400">{item.employee.department}</td>
-                        <td className="px-3 py-2 text-center text-slate-300">{item.presentCount}/{item.recordsCount}</td>
-                        <td className="px-3 py-2 text-center font-bold text-slate-200">{item.totalHours}h</td>
+                        <td className="px-3 py-2 text-stone-500">{item.employee.department}</td>
+                        <td className="px-3 py-2 text-center text-stone-700">{item.presentCount}/{item.recordsCount}</td>
+                        <td className="px-3 py-2 text-center font-bold text-stone-800">{item.totalHours}h</td>
                         <td className="px-3 py-2 text-center text-purple-400 font-semibold">{item.overtimeHours}h</td>
                         <td className="px-3 py-2 text-center text-emerald-400 font-bold">{item.attendancePercent}%</td>
                       </tr>
@@ -1161,18 +1161,18 @@ const Attendance = () => {
                   </tbody>
                 </table>
                 {generatedReport.workerList.length > 10 && (
-                  <div className="p-2 bg-slate-950 text-center text-[10px] text-slate-500">
+                  <div className="p-2 bg-[#FAF7F2] text-center text-[10px] text-stone-400">
                     + {generatedReport.workerList.length - 10} more employees included in final PDF export
                   </div>
                 )}
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-between pt-3 border-t border-slate-800">
+              <div className="flex items-center justify-between pt-3 border-t border-stone-200/90">
                 <button
                   type="button"
                   onClick={() => setReportStep('configure')}
-                  className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition text-xs font-medium"
+                  className="flex items-center space-x-1.5 px-3 py-1.5 bg-[#F8F5EE] hover:bg-stone-100 text-stone-700 rounded-xl transition text-xs font-medium"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>Adjust Filters</span>
@@ -1182,14 +1182,14 @@ const Attendance = () => {
                   <button
                     type="button"
                     onClick={() => setIsReportModalOpen(false)}
-                    className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-medium transition"
+                    className="px-3.5 py-1.5 bg-[#F8F5EE] hover:bg-stone-100 text-stone-700 rounded-xl font-medium transition"
                   >
                     Close
                   </button>
                   <button
                     type="button"
                     onClick={handlePrintPDF}
-                    className="flex items-center space-x-1.5 px-4 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl shadow transition text-xs"
+                    className="flex items-center space-x-1.5 px-4 py-1.5 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-xl shadow transition text-xs"
                   >
                     <Printer className="w-3.5 h-3.5" />
                     <span>Download PDF / Print</span>
@@ -1211,12 +1211,12 @@ const Attendance = () => {
       >
         <form onSubmit={handleAdminSubmit} className="space-y-4 text-xs">
           <div>
-            <label className="block text-slate-300 font-medium mb-1">Select Employee</label>
+            <label className="block text-stone-700 font-medium mb-1">Select Employee</label>
             <select
               required
               value={adminFormData.employeeId}
               onChange={(e) => setAdminFormData({ ...adminFormData, employeeId: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+              className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800"
             >
               {employeesList.map(e => (
                 <option key={e._id} value={e._id}>
@@ -1228,21 +1228,21 @@ const Attendance = () => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Target Date</label>
+              <label className="block text-stone-700 font-medium mb-1">Target Date</label>
               <input
                 type="date"
                 required
                 value={adminFormData.date}
                 onChange={(e) => setAdminFormData({ ...adminFormData, date: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Attendance Status</label>
+              <label className="block text-stone-700 font-medium mb-1">Attendance Status</label>
               <select
                 value={adminFormData.status}
                 onChange={(e) => setAdminFormData({ ...adminFormData, status: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800"
               >
                 <option value="Present">Present</option>
                 <option value="Late">Late</option>
@@ -1254,11 +1254,11 @@ const Attendance = () => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Work Mode</label>
+              <label className="block text-stone-700 font-medium mb-1">Work Mode</label>
               <select
                 value={adminFormData.workType}
                 onChange={(e) => setAdminFormData({ ...adminFormData, workType: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800"
               >
                 <option value="On-Site">On-Site</option>
                 <option value="Remote">Remote</option>
@@ -1266,11 +1266,11 @@ const Attendance = () => {
               </select>
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Shift</label>
+              <label className="block text-stone-700 font-medium mb-1">Shift</label>
               <select
                 value={adminFormData.shift}
                 onChange={(e) => setAdminFormData({ ...adminFormData, shift: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800"
               >
                 <option value="Morning Shift (08:00 - 16:00)">Morning Shift</option>
                 <option value="Evening Shift (16:00 - 00:00)">Evening Shift</option>
@@ -1280,27 +1280,27 @@ const Attendance = () => {
           </div>
 
           <div>
-            <label className="block text-slate-300 font-medium mb-1">Supervisor Notes</label>
+            <label className="block text-stone-700 font-medium mb-1">Supervisor Notes</label>
             <input
               type="text"
               value={adminFormData.notes}
               onChange={(e) => setAdminFormData({ ...adminFormData, notes: e.target.value })}
               placeholder="e.g. Approved shift swap or supervisor override"
-              className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+              className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800"
             />
           </div>
 
-          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-stone-200/90">
             <button
               type="button"
               onClick={() => setIsModalOpen(false)}
-              className="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl font-medium"
+              className="px-4 py-2 bg-[#F8F5EE] text-stone-700 rounded-xl font-medium"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl shadow"
+              className="px-5 py-2 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-xl shadow"
             >
               Record Attendance
             </button>
