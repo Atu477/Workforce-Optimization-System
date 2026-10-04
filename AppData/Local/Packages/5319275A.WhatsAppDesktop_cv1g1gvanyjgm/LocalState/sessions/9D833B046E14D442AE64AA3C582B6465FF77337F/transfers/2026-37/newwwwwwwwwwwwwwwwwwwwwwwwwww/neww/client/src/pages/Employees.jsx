@@ -165,21 +165,21 @@ const Employees = () => {
     <div className="space-y-6">
       
       {/* Page Header & Actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-md">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-stone-200/90 rounded-3xl p-6 shadow-xs">
         <div>
-          <h1 className="text-2xl font-extrabold text-white tracking-tight flex items-center space-x-2">
-            <Users className="w-6 h-6 text-cyan-400" />
+          <h1 className="text-2xl font-black text-stone-900 tracking-tight flex items-center space-x-2">
+            <Users className="w-6 h-6 text-amber-600" />
             <span>Employee Directory</span>
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
-            Centralized Manpower Database • Total Listed: {employees.length}
+          <p className="text-xs text-stone-500 mt-1">
+            Centralized Workforce Database • Total Listed: {employees.length}
           </p>
         </div>
 
         {user?.role === 'Admin' && (
           <button
             onClick={handleOpenAddModal}
-            className="flex items-center justify-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/20 text-xs transition transform active:scale-95"
+            className="flex items-center justify-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-2xl shadow-md shadow-amber-500/20 text-xs transition transform active:scale-95"
           >
             <UserPlus className="w-4 h-4" />
             <span>Add New Employee</span>
@@ -188,18 +188,18 @@ const Employees = () => {
       </div>
 
       {/* Search & Filters Bar */}
-      <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 shadow-lg backdrop-blur space-y-4">
+      <div className="bg-white border border-stone-200/90 rounded-3xl p-4 shadow-xs space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
           
           {/* Search Box */}
           <div className="relative sm:col-span-2">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+            <Search className="w-4 h-4 text-stone-400 absolute left-3 top-3" />
             <input
               type="text"
               placeholder="Search by name, ID, email, or title..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+              className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl pl-9 pr-4 py-2 text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:bg-white focus:border-amber-500"
             />
           </div>
 
@@ -207,7 +207,7 @@ const Employees = () => {
           <select
             value={departmentFilter}
             onChange={(e) => setDepartmentFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+            className="bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-700 focus:outline-none focus:bg-white focus:border-amber-500"
           >
             <option value="">All Departments</option>
             <option value="Engineering">Engineering</option>
@@ -222,7 +222,7 @@ const Employees = () => {
           <select
             value={shiftFilter}
             onChange={(e) => setShiftFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+            className="bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-700 focus:outline-none focus:bg-white focus:border-amber-500"
           >
             <option value="">All Shifts</option>
             <option value="Morning Shift (08:00 - 16:00)">Morning Shift</option>
@@ -234,7 +234,7 @@ const Employees = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+            className="bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-700 focus:outline-none focus:bg-white focus:border-amber-500"
           >
             <option value="">All Statuses</option>
             <option value="Active">Active</option>
@@ -245,10 +245,10 @@ const Employees = () => {
       </div>
 
       {/* Employees Table */}
-      <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl shadow-lg backdrop-blur overflow-hidden">
+      <div className="bg-white border border-stone-200/90 rounded-3xl shadow-xs overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-700">
+            <thead className="bg-[#F8F5EE] text-stone-500 uppercase text-[10px] tracking-wider border-b border-stone-200">
               <tr>
                 <th className="px-4 py-3.5">Employee ID & Name</th>
                 <th className="px-4 py-3.5">Role</th>
@@ -259,31 +259,31 @@ const Employees = () => {
                 {user?.role === 'Admin' && <th className="px-4 py-3.5 text-right">Actions</th>}
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-700/50">
+            <tbody className="divide-y divide-stone-100">
               {loading ? (
                 <tr>
-                  <td colSpan="7" className="px-4 py-8 text-center text-slate-400">
+                  <td colSpan="7" className="px-4 py-8 text-center text-stone-400">
                     Loading employee directory...
                   </td>
                 </tr>
               ) : employees.length === 0 ? (
                 <tr>
-                  <td colSpan="7" className="px-4 py-8 text-center text-slate-400">
+                  <td colSpan="7" className="px-4 py-8 text-center text-stone-400">
                     No employees matching the criteria found.
                   </td>
                 </tr>
               ) : (
                 employees.map((emp) => (
-                  <tr key={emp._id} className="hover:bg-slate-700/20 transition">
-                    <td className="px-4 py-3 font-medium text-slate-200">
+                  <tr key={emp._id} className="hover:bg-[#FAF7F2] transition">
+                    <td className="px-4 py-3 font-semibold text-stone-800">
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 rounded-full bg-cyan-600/20 border border-cyan-500/30 text-cyan-300 font-bold flex items-center justify-center text-xs shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-amber-100 border border-amber-200 text-amber-800 font-bold flex items-center justify-center text-xs shrink-0 shadow-2xs">
                           {emp.name.charAt(0)}
                         </div>
                         <div>
-                          <div className="font-bold text-slate-100">{emp.name}</div>
-                          <div className="text-[10px] text-slate-400 flex items-center space-x-1">
-                            <span className="font-mono text-cyan-400">{emp.employeeId}</span>
+                          <div className="font-bold text-stone-900">{emp.name}</div>
+                          <div className="text-[10px] text-stone-500 flex items-center space-x-1">
+                            <span className="font-mono text-amber-700 font-semibold">{emp.employeeId}</span>
                             <span>•</span>
                             <span>{emp.designation}</span>
                           </div>
@@ -291,56 +291,56 @@ const Employees = () => {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${
-                        emp.role === 'Admin' ? 'bg-purple-500/20 text-purple-300 border-purple-500/30' :
-                        emp.role === 'Manager' ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' :
-                        'bg-slate-700/60 text-slate-300 border-slate-600'
+                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
+                        emp.role === 'Admin' ? 'bg-purple-100 text-purple-700 border-purple-200' :
+                        emp.role === 'Manager' ? 'bg-blue-100 text-blue-700 border-blue-200' :
+                        'bg-stone-100 text-stone-700 border-stone-200'
                       }`}>
                         {emp.role}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-slate-300 font-medium">{emp.department}</td>
-                    <td className="px-4 py-3 text-slate-300">{emp.shift}</td>
+                    <td className="px-4 py-3 text-stone-700 font-medium">{emp.department}</td>
+                    <td className="px-4 py-3 text-stone-600">{emp.shift}</td>
                     <td className="px-4 py-3">
                       <div className="flex flex-wrap gap-1 max-w-xs">
                         {emp.skills && emp.skills.length > 0 ? (
                           emp.skills.slice(0, 3).map((s, idx) => (
-                            <span key={idx} className="px-2 py-0.5 bg-slate-900 text-cyan-300 border border-slate-700 rounded text-[10px]">
+                            <span key={idx} className="px-2 py-0.5 bg-[#F8F5EE] text-amber-800 border border-amber-200/60 rounded-lg text-[10px] font-medium">
                               {s.skillName} ({s.proficiency.charAt(0)})
                             </span>
                           ))
                         ) : (
-                          <span className="text-slate-500 italic text-[11px]">No skills assigned</span>
+                          <span className="text-stone-400 italic text-[11px]">No skills assigned</span>
                         )}
                         {emp.skills && emp.skills.length > 3 && (
-                          <span className="text-[10px] text-slate-400 font-medium">+{emp.skills.length - 3} more</span>
+                          <span className="text-[10px] text-stone-500 font-semibold">+{emp.skills.length - 3} more</span>
                         )}
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${
+                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${
                         emp.status === 'Active' 
-                          ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' 
-                          : 'bg-rose-500/20 text-rose-300 border-rose-500/30'
+                          ? 'bg-emerald-50 text-emerald-700 border-emerald-200' 
+                          : 'bg-rose-50 text-rose-700 border-rose-200'
                       }`}>
                         {emp.status}
                       </span>
                     </td>
                     {user?.role === 'Admin' && (
-                      <td className="px-4 py-3 text-right space-x-2">
+                      <td className="px-4 py-3 text-right space-x-1.5">
                         <button
                           onClick={() => handleOpenEditModal(emp)}
-                          className="p-1.5 text-slate-400 hover:text-cyan-300 hover:bg-slate-700 rounded-lg transition"
+                          className="p-1.5 text-stone-400 hover:text-amber-700 hover:bg-stone-100 rounded-xl transition"
                           title="Edit Employee"
                         >
                           <Edit className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleToggleStatus(emp._id)}
-                          className={`p-1.5 rounded-lg transition ${
+                          className={`p-1.5 rounded-xl transition ${
                             emp.status === 'Active' 
-                              ? 'text-slate-400 hover:text-rose-400 hover:bg-slate-700' 
-                              : 'text-slate-400 hover:text-emerald-400 hover:bg-slate-700'
+                              ? 'text-stone-400 hover:text-rose-600 hover:bg-stone-100' 
+                              : 'text-stone-400 hover:text-emerald-600 hover:bg-stone-100'
                           }`}
                           title={emp.status === 'Active' ? 'Deactivate Employee' : 'Activate Employee'}
                         >
@@ -365,37 +365,37 @@ const Employees = () => {
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Employee ID</label>
+              <label className="block text-stone-600 font-semibold mb-1">Employee ID</label>
               <input
                 type="text"
                 required
                 value={formData.employeeId}
                 onChange={(e) => setFormData({ ...formData, employeeId: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:bg-white focus:border-amber-500"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Full Name</label>
+              <label className="block text-stone-600 font-semibold mb-1">Full Name</label>
               <input
                 type="text"
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:bg-white focus:border-amber-500"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Email Address</label>
+              <label className="block text-stone-600 font-semibold mb-1">Email Address</label>
               <input
                 type="email"
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:bg-white focus:border-amber-500"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">
+              <label className="block text-stone-600 font-semibold mb-1">
                 {editingEmployee ? 'Password (Leave blank to keep existing)' : 'Password'}
               </label>
               <input
@@ -403,15 +403,15 @@ const Employees = () => {
                 required={!editingEmployee}
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:bg-white focus:border-amber-500"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">System Role</label>
+              <label className="block text-stone-600 font-semibold mb-1">System Role</label>
               <select
                 value={formData.role}
                 onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:bg-white focus:border-amber-500"
               >
                 <option value="Employee">Employee</option>
                 <option value="Manager">Manager</option>
@@ -419,11 +419,11 @@ const Employees = () => {
               </select>
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Department</label>
+              <label className="block text-stone-600 font-semibold mb-1">Department</label>
               <select
                 value={formData.department}
                 onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:bg-white focus:border-amber-500"
               >
                 <option value="Engineering">Engineering</option>
                 <option value="Operations">Operations</option>
@@ -434,22 +434,22 @@ const Employees = () => {
               </select>
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Designation / Title</label>
+              <label className="block text-stone-600 font-semibold mb-1">Designation / Title</label>
               <input
                 type="text"
                 required
                 value={formData.designation}
                 onChange={(e) => setFormData({ ...formData, designation: e.target.value })}
                 placeholder="e.g. Senior Automation Engineer"
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:bg-white focus:border-amber-500"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Assigned Shift</label>
+              <label className="block text-stone-600 font-semibold mb-1">Assigned Shift</label>
               <select
                 value={formData.shift}
                 onChange={(e) => setFormData({ ...formData, shift: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-200"
+                className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:bg-white focus:border-amber-500"
               >
                 <option value="Morning Shift (08:00 - 16:00)">Morning Shift (08:00 - 16:00)</option>
                 <option value="Evening Shift (16:00 - 00:00)">Evening Shift (16:00 - 00:00)</option>
@@ -460,26 +460,26 @@ const Employees = () => {
 
           {/* Skill Tagging Selection */}
           <div className="pt-2">
-            <label className="block text-slate-300 font-medium mb-2">Tag Employee Skills</label>
-            <div className="bg-slate-950 border border-slate-800 rounded-xl p-3 max-h-40 overflow-y-auto space-y-2">
+            <label className="block text-stone-600 font-semibold mb-2">Tag Employee Skills</label>
+            <div className="bg-[#FAF7F2] border border-stone-200 rounded-2xl p-3 max-h-40 overflow-y-auto space-y-2">
               {skillsCatalog.map((sk) => {
                 const assigned = formData.skills.find(s => s.skillName === sk.name);
                 return (
-                  <div key={sk._id} className="flex items-center justify-between bg-slate-900 p-2 rounded-lg border border-slate-800">
-                    <label className="flex items-center space-x-2 cursor-pointer text-slate-200">
+                  <div key={sk._id} className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-stone-200/80">
+                    <label className="flex items-center space-x-2 cursor-pointer text-stone-800">
                       <input
                         type="checkbox"
                         checked={!!assigned}
                         onChange={() => handleToggleSkill(sk.name, sk.category)}
-                        className="rounded border-slate-700 text-cyan-600 focus:ring-0"
+                        className="rounded border-stone-300 text-amber-600 focus:ring-0 w-4 h-4"
                       />
-                      <span>{sk.name} <span className="text-[10px] text-slate-500">({sk.category})</span></span>
+                      <span className="font-medium">{sk.name} <span className="text-[10px] text-stone-500">({sk.category})</span></span>
                     </label>
                     {assigned && (
                       <select
                         value={assigned.proficiency}
                         onChange={(e) => handleProficiencyChange(sk.name, e.target.value)}
-                        className="bg-slate-950 text-cyan-300 text-[10px] border border-slate-700 rounded px-2 py-0.5"
+                        className="bg-[#FAF7F2] text-amber-800 text-[10px] font-semibold border border-stone-200 rounded-lg px-2 py-1"
                       >
                         <option value="Beginner">Beginner</option>
                         <option value="Intermediate">Intermediate</option>
@@ -492,17 +492,17 @@ const Employees = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-stone-200">
             <button
               type="button"
               onClick={() => setIsModalOpen(false)}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-medium"
+              className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-xl font-semibold transition"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-xl shadow"
+              className="px-5 py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-xl shadow-md shadow-amber-500/20 transition"
             >
               {editingEmployee ? 'Save Changes' : 'Create Record'}
             </button>

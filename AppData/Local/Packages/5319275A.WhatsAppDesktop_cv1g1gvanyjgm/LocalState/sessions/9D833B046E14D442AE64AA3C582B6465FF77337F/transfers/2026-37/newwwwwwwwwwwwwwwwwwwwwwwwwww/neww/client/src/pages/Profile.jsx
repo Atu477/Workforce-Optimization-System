@@ -69,20 +69,20 @@ const Profile = () => {
     <div className="space-y-6 max-w-4xl mx-auto">
       
       {/* Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-md flex items-center space-x-4">
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center text-white font-extrabold text-2xl shadow-lg shadow-cyan-500/20">
+      <div className="bg-white border border-stone-200/90 rounded-3xl p-6 shadow-xs flex items-center space-x-4">
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-amber-500/20">
           {user?.name?.charAt(0)}
         </div>
         <div>
-          <h1 className="text-2xl font-extrabold text-white tracking-tight">{user?.name}</h1>
-          <p className="text-xs text-slate-400">
-            {user?.designation} • <span className="text-cyan-400 font-mono">{user?.employeeId}</span>
+          <h1 className="text-2xl font-black text-stone-900 tracking-tight">{user?.name}</h1>
+          <p className="text-xs text-stone-500">
+            {user?.designation} • <span className="text-amber-700 font-mono font-semibold">{user?.employeeId}</span>
           </p>
           <div className="flex items-center space-x-2 mt-2">
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/30">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-100 text-purple-700 border border-purple-200">
               Role: {user?.role}
             </span>
-            <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-800 text-slate-300 border border-slate-700">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-stone-100 text-stone-700 border border-stone-200">
               Department: {user?.department}
             </span>
           </div>
@@ -90,8 +90,8 @@ const Profile = () => {
       </div>
 
       {message && (
-        <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs p-3 rounded-xl flex items-center space-x-2">
-          <CheckCircle className="w-4 h-4" />
+        <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs p-3.5 rounded-2xl flex items-center space-x-2">
+          <CheckCircle className="w-4 h-4 text-emerald-600" />
           <span>{message}</span>
         </div>
       )}
@@ -100,47 +100,47 @@ const Profile = () => {
       <form onSubmit={handleSaveProfile} className="space-y-6">
         
         {/* Contact & Shift Specs */}
-        <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 shadow-lg backdrop-blur space-y-4">
-          <h3 className="text-sm font-bold text-slate-100 flex items-center space-x-2">
-            <User className="w-4 h-4 text-cyan-400" />
+        <div className="bg-white border border-stone-200/90 rounded-3xl p-6 shadow-xs space-y-4">
+          <h3 className="text-sm font-bold text-stone-800 flex items-center space-x-2">
+            <User className="w-4 h-4 text-amber-600" />
             <span>Personal & Employment Details</span>
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
             <div>
-              <label className="block text-slate-400 mb-1">Email Address</label>
-              <div className="flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-slate-300">
-                <Mail className="w-4 h-4 text-slate-500" />
+              <label className="block text-stone-500 font-semibold mb-1">Email Address</label>
+              <div className="flex items-center space-x-2 bg-[#F8F5EE] border border-stone-200/80 rounded-xl px-3 py-2 text-stone-700">
+                <Mail className="w-4 h-4 text-stone-400" />
                 <span>{user?.email}</span>
               </div>
             </div>
 
             <div>
-              <label className="block text-slate-400 mb-1">Assigned Shift Schedule</label>
-              <div className="flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-slate-300">
-                <Clock className="w-4 h-4 text-cyan-400" />
+              <label className="block text-stone-500 font-semibold mb-1">Assigned Shift Schedule</label>
+              <div className="flex items-center space-x-2 bg-[#F8F5EE] border border-stone-200/80 rounded-xl px-3 py-2 text-stone-700">
+                <Clock className="w-4 h-4 text-amber-600" />
                 <span>{user?.shift}</span>
               </div>
             </div>
 
             <div>
-              <label className="block text-slate-300 font-medium mb-1">Contact Phone Number</label>
+              <label className="block text-stone-600 font-semibold mb-1">Contact Phone Number</label>
               <div className="relative">
-                <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                <Phone className="w-4 h-4 text-stone-400 absolute left-3 top-2.5" />
                 <input
                   type="text"
                   value={contactNumber}
                   onChange={(e) => setContactNumber(e.target.value)}
                   placeholder="+1 555-0199"
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-[#FAF7F2] border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-xs text-stone-800 focus:outline-none focus:bg-white focus:border-amber-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-slate-400 mb-1">Account Status</label>
-              <div className="flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-emerald-400 font-semibold">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <label className="block text-stone-500 font-semibold mb-1">Account Status</label>
+              <div className="flex items-center space-x-2 bg-[#F8F5EE] border border-stone-200/80 rounded-xl px-3 py-2 text-emerald-700 font-bold">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>{user?.status}</span>
               </div>
             </div>
@@ -148,12 +148,12 @@ const Profile = () => {
         </div>
 
         {/* My Skill Ratings Editor */}
-        <div className="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 shadow-lg backdrop-blur space-y-4">
-          <h3 className="text-sm font-bold text-slate-100 flex items-center space-x-2">
-            <Layers className="w-4 h-4 text-cyan-400" />
+        <div className="bg-white border border-stone-200/90 rounded-3xl p-6 shadow-xs space-y-4">
+          <h3 className="text-sm font-bold text-stone-800 flex items-center space-x-2">
+            <Layers className="w-4 h-4 text-amber-600" />
             <span>My Skill Ratings & Competency Tags</span>
           </h3>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-stone-500">
             Select skills from company catalog and set your self-assessed proficiency levels (Beginner, Intermediate, Expert)
           </p>
 
@@ -161,17 +161,17 @@ const Profile = () => {
             {skillsCatalog.map((sk) => {
               const assigned = userSkills.find(s => s.skillName === sk.name);
               return (
-                <div key={sk._id} className="flex items-center justify-between bg-slate-900 p-3 rounded-xl border border-slate-800">
-                  <label className="flex items-center space-x-3 cursor-pointer text-xs text-slate-200">
+                <div key={sk._id} className="flex items-center justify-between bg-[#F8F5EE] p-3 rounded-2xl border border-stone-200/80">
+                  <label className="flex items-center space-x-3 cursor-pointer text-xs text-stone-800">
                     <input
                       type="checkbox"
                       checked={!!assigned}
                       onChange={() => handleToggleSkill(sk.name, sk.category)}
-                      className="rounded border-slate-700 text-cyan-600 focus:ring-0 w-4 h-4"
+                      className="rounded border-stone-300 text-amber-600 focus:ring-0 w-4 h-4"
                     />
                     <div>
-                      <div className="font-semibold">{sk.name}</div>
-                      <div className="text-[10px] text-slate-500">{sk.category} • {sk.description}</div>
+                      <div className="font-semibold text-stone-900">{sk.name}</div>
+                      <div className="text-[10px] text-stone-500">{sk.category} • {sk.description}</div>
                     </div>
                   </label>
 
@@ -179,7 +179,7 @@ const Profile = () => {
                     <select
                       value={assigned.proficiency}
                       onChange={(e) => handleProficiencyChange(sk.name, e.target.value)}
-                      className="bg-slate-950 text-cyan-300 text-xs border border-slate-700 rounded-lg px-2.5 py-1 focus:outline-none focus:border-cyan-500"
+                      className="bg-white text-amber-800 text-xs border border-stone-200 rounded-xl px-2.5 py-1 focus:outline-none focus:border-amber-500 font-semibold"
                     >
                       <option value="Beginner">Beginner</option>
                       <option value="Intermediate">Intermediate</option>
@@ -197,7 +197,7 @@ const Profile = () => {
           <button
             type="submit"
             disabled={saving}
-            className="flex items-center space-x-2 px-6 py-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/20 text-xs transition transform active:scale-95 disabled:opacity-50"
+            className="flex items-center space-x-2 px-6 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-2xl shadow-md shadow-amber-500/20 text-xs transition transform active:scale-95 disabled:opacity-50"
           >
             <Save className="w-4 h-4" />
             <span>{saving ? 'Saving...' : 'Save Profile Changes'}</span>
